@@ -1,0 +1,242 @@
+<div class="h-full w-full mb-4 p-8 flex items-center justify-center">
+  <p-stepper [(value)]="activeStep" class="basis-[40rem]">
+    <p-step-list>
+      <p-step [value]="1" class="flex flex-row flex-auto gap-2">
+        <ng-template #content let-activateCallback="activateCallback" let-value="value">
+          <button class="bg-transparent border-0 inline-flex flex-col gap-2">
+            <span
+              class="rounded-full border-2 w-12 h-12 inline-flex items-center justify-center"
+              [ngClass]="{
+                'bg-primary text-primary-contrast border-primary': value <= activeStep,
+                'border-surface': value > activeStep,
+              }"
+            >
+              <i class="pi pi-info-circle"></i>
+            </span>
+          </button>
+        </ng-template>
+      </p-step>
+      <p-step [value]="2" class="flex flex-row flex-auto gap-2">
+        <ng-template #content let-activateCallback="activateCallback" let-value="value">
+          <button class="bg-transparent border-0 inline-flex flex-col gap-2">
+            <span
+              class="rounded-full border-2 w-12 h-12 inline-flex items-center justify-center"
+              [ngClass]="{
+                'bg-primary text-primary-contrast border-primary': value <= activeStep,
+                'border-surface': value > activeStep,
+              }"
+            >
+              <i class="pi pi-cog"></i>
+            </span>
+          </button>
+        </ng-template>
+      </p-step>
+      <p-step [value]="3" class="flex flex-row flex-auto gap-2">
+        <ng-template #content let-activateCallback="activateCallback" let-value="value">
+          <button class="bg-transparent border-0 inline-flex flex-col gap-2">
+            <span
+              class="rounded-full border-2 w-12 h-12 inline-flex items-center justify-center"
+              [ngClass]="{
+                'bg-primary text-primary-contrast border-primary': value <= activeStep,
+                'border-surface': value > activeStep,
+              }"
+            >
+              <i class="pi pi-cog"></i>
+            </span>
+          </button>
+        </ng-template>
+      </p-step>
+      <p-step [value]="4" class="flex flex-row flex-auto gap-2">
+        <ng-template #content let-activateCallback="activateCallback" let-value="value">
+          <button class="bg-transparent border-0 inline-flex flex-col gap-2">
+            <span
+              class="rounded-full border-2 w-12 h-12 inline-flex items-center justify-center"
+              [ngClass]="{
+                'bg-primary text-primary-contrast border-primary': value <= activeStep,
+                'border-surface': value > activeStep,
+              }"
+            >
+              <i class="pi pi-id-card"></i>
+            </span>
+          </button>
+        </ng-template>
+      </p-step>
+    </p-step-list>
+    <p-step-panels>
+      <p-step-panel [value]="1">
+        <ng-template #content let-activateCallback="activateCallback">
+          <div class="flex justify-center">
+            <p-card [style]="{ width: '25rem', overflow: 'hidden', minHeight: '600px' }">
+              <ng-template #header>
+                <img alt="Card" class="w-full" src="/assets/img/card.jpg" />
+              </ng-template>
+              <ng-template #title
+                ><p class="text-center text-blue-500">Set up your interview</p>
+              </ng-template>
+              <p class="text-cente">
+                Configure a few details to help the AI tailor the experience to your goals and skill
+                level.
+              </p>
+            </p-card>
+          </div>
+          <div class="flex pt-6 justify-end">
+            <p-button
+              (onClick)="activateCallback(2)"
+              label="Next"
+              icon="pi pi-arrow-right"
+              iconPos="right"
+              severity="info"
+            />
+          </div>
+        </ng-template>
+      </p-step-panel>
+      <p-step-panel [value]="2">
+        <ng-template #content let-activateCallback="activateCallback">
+          <div class="flex justify-center">
+            <p-card [style]="{ width: '25rem', overflow: 'hidden', minHeight: '600px' }">
+              <ng-template #header>
+                <img alt="Card" class="w-full" src="/assets/img/card.jpg" />
+              </ng-template>
+              <ng-template #title
+                ><p class="text-center text-blue-500">Target role</p>
+              </ng-template>
+              <div class="card">
+                <form [formGroup]="form">
+                  <p-select
+                    required
+                    formControlName="role"
+                    [options]="roleOptions"
+                    optionLabel="label"
+                    optionValue="value"
+                    class="w-full md:w-56"
+                    fluid
+                  />
+                  @if (role.dirty && role.invalid) {
+                    <p-message severity="error" size="small" variant="simple">
+                      @if (role.hasError('required')) {
+                        <span>Role is required</span>
+                      }
+                    </p-message>
+                  }
+                </form>
+              </div>
+            </p-card>
+          </div>
+          <div class="flex pt-6 justify-between">
+            <p-button
+              (onClick)="activateCallback(1)"
+              label="Back"
+              severity="secondary"
+              icon="pi pi-arrow-left"
+            />
+            <p-button
+              (onClick)="activateCallback(3)"
+              label="Next"
+              icon="pi pi-arrow-right"
+              iconPos="right"
+              severity="info"
+              [disabled]="role.invalid"
+            />
+          </div>
+        </ng-template>
+      </p-step-panel>
+      <p-step-panel [value]="3">
+        <ng-template #content let-activateCallback="activateCallback">
+          <div class="flex justify-center">
+            <p-card [style]="{ width: '25rem', overflow: 'hidden', minHeight: '600px' }">
+              <ng-template #header>
+                <img alt="Card" class="w-full" src="/assets/img/card.jpg" />
+              </ng-template>
+              <ng-template #title><p class="text-center text-blue-500">Seniority</p></ng-template>
+              <div class="card">
+                <form [formGroup]="form">
+                  <p-select
+                    required
+                    formControlName="seniority"
+                    [options]="seniorityOptions"
+                    optionLabel="label"
+                    optionValue="value"
+                    class="w-full md:w-56"
+                    fluid
+                  />
+                  @if (seniority.dirty && seniority.invalid) {
+                    <p-message severity="error" size="small" variant="simple">
+                      @if (seniority.hasError('required')) {
+                        <span>Seniority is required</span>
+                      }
+                    </p-message>
+                  }
+                </form>
+              </div>
+            </p-card>
+          </div>
+          <div class="flex pt-6 justify-between">
+            <p-button
+              (onClick)="activateCallback(2)"
+              label="Back"
+              severity="secondary"
+              icon="pi pi-arrow-left"
+            />
+            <p-button
+              (onClick)="activateCallback(4)"
+              label="Next"
+              icon="pi pi-arrow-right"
+              iconPos="right"
+              severity="info"
+              [disabled]="seniority.invalid"
+            />
+          </div>
+        </ng-template>
+      </p-step-panel>
+      <p-step-panel [value]="4">
+        <ng-template #content let-activateCallback="activateCallback">
+          <div class="flex justify-center">
+            <p-card [style]="{ width: '25rem', overflow: 'hidden', minHeight: '600px' }">
+              <ng-template #header>
+                <img alt="Card" class="w-full" src="/assets/img/card.jpg" />
+              </ng-template>
+              <ng-template #title><p class="text-center text-blue-500">Type</p></ng-template>
+              <div class="card">
+                <form [formGroup]="form">
+                  <p-select
+                    required
+                    formControlName="interviewType"
+                    [options]="typeOptions"
+                    optionLabel="label"
+                    optionValue="value"
+                    class="w-full md:w-56"
+                    fluid
+                  />
+                  @if (seniority.dirty && seniority.invalid) {
+                    <p-message severity="error" size="small" variant="simple">
+                      @if (interviewType.hasError('required')) {
+                        <span>Seniority is required</span>
+                      }
+                    </p-message>
+                  }
+                </form>
+              </div>
+            </p-card>
+          </div>
+          <div class="flex pt-6 justify-between">
+            <p-button
+              (onClick)="activateCallback(3)"
+              label="Back"
+              severity="secondary"
+              icon="pi pi-arrow-left"
+            />
+            <p-button
+              label="{{ isSubmiting() ? 'Starting...' : 'Start Interview' }}"
+              icon="pi pi-arrow-right"
+              iconPos="right"
+              severity="info"
+              [loading]="isSubmiting()"
+              [disabled]="form.invalid"
+              (onClick)="startInterview()"
+            />
+          </div>
+        </ng-template>
+      </p-step-panel>
+    </p-step-panels>
+  </p-stepper>
+</div>

@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { ButtonModule } from 'primeng/button';
+import { ToastModule } from 'primeng/toast';
+import { MainLayoutComponent } from './layout/components/main-layout/main-layout.component';
 
 @Component({
   selector: 'app-root',
-  imports: [ButtonModule],
-  templateUrl: './app.html',
+  imports: [MainLayoutComponent, ToastModule],
+  template: `<app-main-layout />`,
   styleUrl: './app.scss',
 })
 export class App {}
