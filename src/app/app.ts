@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { ToastModule } from 'primeng/toast';
+import { MainLayoutComponent } from './layout/components/main-layout/main-layout.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
-  template: '<router-outlet></router-outlet>',
+  imports: [MainLayoutComponent, ToastModule],
+  template: `<app-main-layout />`,
   styleUrl: './app.scss',
 })
 export class App {}

@@ -9,24 +9,24 @@ export const INTERVIEW_ROUTES: Routes = [
       {
         path: 'setup',
         loadComponent: () =>
-          import('./setup/pages/interview-setup-page/interview-setup-page.component').then(
-            (m) => m.InterviewSetupPageComponent,
+          import('./pages/interview-setup/interview-setup.component').then(
+            (m) => m.InterviewSetupComponent,
           ),
         title: 'Interview Setup',
       },
       {
-        path: 'session',
+        path: 'session/:id',
         loadComponent: () =>
-          import('./session/pages/interview-session-page/interview-session-page.component').then(
-            (m) => m.InterviewSessionPageComponent,
+          import('./pages/interview-session/interview-session.component').then(
+            (m) => m.InterviewSessionComponent,
           ),
         title: 'Interview Session',
       },
       {
         path: 'results',
         loadComponent: () =>
-          import('./results/pages/interview-result-page/interview-result-page.component').then(
-            (m) => m.InterviewResultPageComponent,
+          import('./pages/interview-result/interview-result.component').then(
+            (m) => m.InterviewResultComponent,
           ),
         title: 'Interview Results',
       },
