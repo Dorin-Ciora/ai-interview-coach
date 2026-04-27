@@ -16,16 +16,12 @@ export class AuthStore {
   profile = inject(ProfileService);
 
   async init() {
-    console.log('init');
     const { data } = await this.supabase.client.auth.getSession();
-    console.log('session', data.session);
 
     this.session.set(data.session);
     this.user.set(data.session?.user ?? null);
-    console.log('data', data);
 
     this.supabase.client.auth.onAuthStateChange((_event, session) => {
-      console.log('auth change', session);
       this.session.set(session);
       this.user.set(session?.user ?? null);
 
@@ -39,6 +35,5 @@ export class AuthStore {
     }
 
     this.initialized.set(true);
-    console.log('init done');
   }
 }

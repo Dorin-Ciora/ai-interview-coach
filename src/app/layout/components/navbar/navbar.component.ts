@@ -4,6 +4,7 @@ import { ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
 import { AuthStore } from '../../../core/auth/store/auth.store';
 import { AuthService } from '../../../core/auth/services/auth.service';
+import { NotificationService } from '../../../core/notification/services/notification.service';
 
 @Component({
   selector: 'app-navbar',
@@ -16,6 +17,7 @@ export class NavigationComponent {
   protected readonly authStore = inject(AuthStore);
   private readonly authService = inject(AuthService);
   private readonly router = inject(Router);
+  private readonly notification = inject(NotificationService);
 
   async logOut(): Promise<void> {
     try {
@@ -27,6 +29,7 @@ export class NavigationComponent {
       }
 
       await this.router.navigate(['/auth/login']);
+      this.notification.success('Successfully logged out');
     } catch (error) {
       console.error('Unexpected logout error:', error);
     }

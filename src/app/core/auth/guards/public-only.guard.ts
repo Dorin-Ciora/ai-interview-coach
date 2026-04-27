@@ -7,7 +7,6 @@ export const publicOnlyGuard: CanActivateFn = () => {
   const router = inject(Router);
 
   const isLoggedIn = authStore.isLoggedIn();
-  console.log('isLoggedIn guard', isLoggedIn);
 
   if (isLoggedIn) {
     return router.createUrlTree(['/interview/setup']);

@@ -6,7 +6,10 @@ import { ToastModule } from 'primeng/toast';
 @Component({
   selector: 'app-main-layout',
   imports: [RouterOutlet, NavigationComponent, ToastModule],
-  template: ` <app-navbar />
-    <main><p-toast position="bottom-left" key="bl" /><router-outlet /></main>`,
+  template: `<div class="layout-wrapper">
+    <app-navbar />
+    <main><p-toast position="bottom-left" key="bl" /><router-outlet /></main>
+  </div>`,
+  styleUrls: ['./main-layout.component.scss'],
 })
 export class MainLayoutComponent {}

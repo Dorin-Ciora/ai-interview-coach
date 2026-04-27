@@ -67,6 +67,7 @@ export class LoginPageComponent {
       await this.profile.ensureProfile(data.user);
     }
 
-    this.router.navigateByUrl('/interview/setup');
+    await this.router.navigateByUrl('/interview/setup');
+    this.notification.success('Successfully logged in');
   }
 }

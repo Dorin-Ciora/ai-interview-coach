@@ -78,18 +78,15 @@ export class InterviewSetupComponent {
 
     try {
       const { role, seniority, interviewType } = this.form.getRawValue();
-      console.log('role', role);
       const interview = await this.interviewService.createInterview({
         role,
         seniority,
         interviewType,
       });
-      console.log('interview', interview);
 
       await this.interviewService.updateInterviewStatus(interview.id, 'in_progress');
 
       const firstQuestion = this.buildFirstQuestion(role, seniority, interviewType);
-      console.log('firstQuestion', firstQuestion);
       await this.interviewMessageService.addMessage({
         interviewId: interview.id,
         sender: 'ai',
@@ -99,7 +96,6 @@ export class InterviewSetupComponent {
 
       await this.router.navigate(['/interview/session', interview.id]);
     } catch (error) {
-      console.log('error', error);
       this.errorMsg = error instanceof Error ? error.message : 'Failed to start interview';
     } finally {
       this.isSubmiting.set(false);
