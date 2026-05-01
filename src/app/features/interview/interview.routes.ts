@@ -17,7 +17,7 @@ export const INTERVIEW_ROUTES: Routes = [
       {
         path: 'session/:id',
         loadComponent: () =>
-          import('./pages/interview-session/interview-session.component').then(
+          import('./pages/interview-session/shell/interview-session.component').then(
             (m) => m.InterviewSessionComponent,
           ),
         title: 'Interview Session',

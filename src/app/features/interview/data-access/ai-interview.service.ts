@@ -2,6 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { SupabaseService } from '../../../core/supabase/services/supabase.service';
 import { InterviewMessage } from '../shared/model/interview-message.model';
 import { Interview } from '../shared/model/interview.model';
+import { AiChatMessage } from '../shared/model/ai-chat.model';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +12,7 @@ export class AiInterviewService {
 
   async generateNextQuestion(input: {
     interview: Interview;
-    messages: InterviewMessage[];
+    messages: AiChatMessage[];
   }): Promise<{ message: string }> {
     const { data, error } = await this.supabase.functions.invoke('generate-next-question', {
       body: {
@@ -21,10 +22,7 @@ export class AiInterviewService {
           seniority: input.interview.seniority,
           interviewType: input.interview.interview_type,
         },
-        messages: input.messages.map((message) => ({
-          sender: message.sender,
-          messageText: message.message_text,
-        })),
+        messages: input.messages,
       },
     });
 

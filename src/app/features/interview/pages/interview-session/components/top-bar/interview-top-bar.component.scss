@@ -1,0 +1,28 @@
+.topbar {
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.left {
+  display: flex;
+  gap: 8px;
+}
+
+.center {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.timer {
+  color: #111827;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+}

@@ -1,0 +1,146 @@
+.answer-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 16px;
+}
+
+/* INPUT */
+.input-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #111827;
+}
+
+textarea {
+  width: 100%;
+  resize: none;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 15px;
+  line-height: 1.5;
+  transition:
+    border 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+}
+
+/* PROCESSING */
+.processing {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #6b7280;
+  font-style: italic;
+}
+
+.loader {
+  width: 16px;
+  height: 16px;
+  border: 2px solid #e5e7eb;
+  border-top: 2px solid #6366f1;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* FEEDBACK */
+.feedback-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  border-radius: 12px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  animation: fadeIn 0.2s ease;
+}
+
+/* SCORE */
+.score {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.score-value {
+  font-size: 18px;
+  font-weight: 600;
+  color: #4f46e5;
+}
+
+/* SECTIONS */
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.section-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.section-text {
+  font-size: 14px;
+  color: #374151;
+  line-height: 1.4;
+}
+
+/* VARIANTS */
+.section.warning {
+  background: #fffbeb;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.section.tip {
+  background: #ecfdf5;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+/* ACTIONS */
+.actions {
+  margin-top: auto;
+  display: flex;
+  justify-content: flex-end;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.score-value.high {
+  color: #16a34a;
+}
+.score-value.medium {
+  color: #f59e0b;
+}
+.score-value.low {
+  color: #dc2626;
+}

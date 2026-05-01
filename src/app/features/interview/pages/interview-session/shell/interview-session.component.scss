@@ -1,0 +1,55 @@
+.interview-session {
+  height: calc(100vh - 64px - 72px); // minus top + bottom
+  padding: 16px;
+  background: #f3f4f6;
+}
+
+.layout {
+  display: flex;
+  gap: 16px;
+  height: 100%;
+}
+
+/* LEFT PANEL */
+.left {
+  background: #f9fafb;
+  border-radius: 12px;
+  padding: 16px;
+  overflow: auto;
+  flex-basis: 40%;
+}
+
+/* RIGHT PANEL */
+.right {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex-basis: 60%;
+}
+
+/* STATES */
+.state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.state-loading {
+  font-size: 16px;
+  color: #6b7280;
+}
+
+/* ERROR */
+.error {
+  color: #dc2626;
+  font-size: 14px;
+}
+
+.left,
+.right {
+  transition: all 0.2s ease;
+}

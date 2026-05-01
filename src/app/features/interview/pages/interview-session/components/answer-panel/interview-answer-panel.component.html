@@ -1,0 +1,58 @@
+<div class="answer-container">
+  <!-- INPUT AREA -->
+  <div class="input-section">
+    <label class="label">Your Answer</label>
+
+    <textarea
+      pInputTextarea
+      [(ngModel)]="answer"
+      placeholder="Start typing your answer here..."
+      rows="8"
+    >
+    </textarea>
+  </div>
+
+  <!-- PROCESSING STATE -->
+  @if (status() === 'processing') {
+    <div class="processing">
+      <span class="loader"></span>
+      <p>Analyzing your answer...</p>
+    </div>
+  }
+
+  <!-- FEEDBACK -->
+  @if (status() === 'feedback') {
+    <div class="feedback-card">
+      <div class="score">
+        <span class="score-value" [ngClass]="getScoreClass(5)">8/10</span>
+      </div>
+
+      <!-- QUICK FEEDBACK -->
+      <div class="section">
+        <p class="section-title">Quick Feedback</p>
+        <p class="section-text">Nice</p>
+      </div>
+
+      <!-- MISSING -->
+      <div class="section warning">
+        <p class="section-title">Missing</p>
+        <p class="section-text">Bad</p>
+      </div>
+
+      <!-- TIP -->
+      <div class="section tip">
+        <p class="section-title">Tip</p>
+        <p class="section-text">improve</p>
+      </div>
+    </div>
+  }
+
+  <!-- ACTION -->
+  <div class="actions">
+    <button
+      pButton
+      label="{{ status() === 'feedback' ? 'Next question' : 'Submit answer' }}"
+      (click)="submit()"
+    ></button>
+  </div>
+</div>

@@ -1,16 +1,18 @@
 import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Interview } from '../../shared/model/interview.model';
-import { InterviewMessage } from '../../shared/model/interview-message.model';
 import { CommonModule } from '@angular/common';
-import { InterviewSessionFacade } from './data-access/interview-session.facade';
-import { AnswerBoxComponent } from './components/answer-box/answer-box.component';
-import { ConversationThreadComponent } from './components/conversation-thread/conversation-thread.component';
+import { InterviewQuestionPanelComponent } from '../components/question-pannel/interview-question-panel.component';
+import { InnterviewAnswerPanelComponent } from '../components/answer-panel/interview-answer-panel.component';
+import { InterviewSessionFacade } from '../data-access/interview-session.facade';
+import { Interview } from '../../../shared/model/interview.model';
+import { InterviewMessage } from '../../../shared/model/interview-message.model';
+import { InterviewTopBarComponent } from '../components/top-bar/interview-top-bar.component';
 
 @Component({
   selector: 'app-interview-session',
   templateUrl: 'interview-session.component.html',
-  imports: [CommonModule, AnswerBoxComponent, ConversationThreadComponent],
+  styleUrls: ['./interview-session.component.scss'],
+  imports: [CommonModule, InnterviewAnswerPanelComponent, InterviewQuestionPanelComponent, InterviewTopBarComponent],
   providers: [InterviewSessionFacade],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

@@ -1,0 +1,29 @@
+<app-interview-top-bar />
+<section class="interview-session">
+  @if (facade.isLoading()) {
+    <div class="state state-loading">
+      <p>Loading interview...</p>
+    </div>
+  } @else {
+    <div class="layout">
+      <!-- LEFT: QUESTION PANEL -->
+      <div class="left">
+        <app-interview-question-panel [messages]="facade.messages()">
+        </app-interview-question-panel>
+      </div>
+
+      <!-- RIGHT: ANSWER PANEL -->
+      <div class="right">
+        @if (facade.error()) {
+          <p class="error">{{ facade.error() }}</p>
+        }
+
+        <app-interview-answer-panel
+          [disabled]="facade.isSubmitting()"
+          (answerSubmit)="onAnswerSubmit($event)"
+        >
+        </app-interview-answer-panel>
+      </div>
+    </div>
+  }
+</section>
